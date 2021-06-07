@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="py-5 mt-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-md sm:rounded-md">
+            <div class="bg-white mx-3 sm:mx-0 rounded-md overflow-hidden shadow-md sm:rounded-md">
                 <div class="px-6 py-4 text-lg flex justify-between items-center" style="background: #DAB552">
                     <div>
                         {{ __("Shortener")  }}
@@ -36,7 +36,7 @@
 
                         <div class="" id="alias_block" style="display: none">
                             <!-- <x-label for="alias" :value="__('Custom Link (Alias)')" /> -->
-                            <x-input id="alias" class="mt-1 border-0 w-auto shadow-none px-0" type="text" value="{{ Request::url() }}/" disabled />
+                            <x-input id="alias" class="mt-1 border-0 w-28 md:w-auto shadow-none px-0" type="text" value="{{ Request::url() }}/" disabled />
                             <x-input id="alias" value="{{ old('alias') }}" class="mt-1 w-1/2" type="text" name="alias" />
                         </div>
 

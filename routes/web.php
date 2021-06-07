@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{alias?}', [LinkShortenerController::class, 'home']);
+Route::get('/{alias?}', [LinkShortenerController::class, 'home'])->name('home');
 Route::post('/', [LinkShortenerController::class, 'insert']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 Route::prefix('/a')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
+
     require __DIR__.'/auth.php';
 });
