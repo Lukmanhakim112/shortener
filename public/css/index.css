@@ -1,0 +1,26 @@
+/* .link::after { */
+/*     content: ""; */
+/*     display: block; */
+/*     height: 0; */
+/*     left: 0; */
+/*     top: 0; */
+/*     border-left: 2px solid #941D15; */
+/*     transition: .5s; */
+/* } */
+
+/* .link:hover::after { */
+/*     height: 100px; */
+/* } */
+.link {
+    border-left: 2px solid blue;
+    transition:clip-path ease-out .2s;
+    clip-path: polygon(
+        calc(0% + 5px) calc(0% + 5px), /* top left */
+        calc(100% - 5px) calc(0% + 5px), /* top right */
+        calc(100% - 5px) calc(100% - 5px), /* bottom right */
+        calc(0% + 5px) calc(100% - 5px) /* bottom left */
+    );
+}
+.link:hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

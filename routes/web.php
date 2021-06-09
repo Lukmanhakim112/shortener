@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Shortener\LinkShortenerController;
+use App\Http\Controllers\Shortener\DashboardShortenerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,9 +21,9 @@ Route::post('/', [LinkShortenerController::class, 'insert']);
 
 Route::prefix('/a')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
+    Route::get('/dashboard', [DashboardShortenerController::class, 'dashboard'])
+        ->middleware(['auth'])
+        ->name('dashboard');
 
     require __DIR__.'/auth.php';
 });
