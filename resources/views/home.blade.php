@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <x-button class="ml-3">
+                            <x-button type="submit" class="ml-3">
                                 {{ __('Short Me!') }}
                             </x-button>
                         </div>

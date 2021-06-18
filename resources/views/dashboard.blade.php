@@ -25,16 +25,42 @@
                             </button>
                             @endforeach
                         </div>
-                        <div class="w-2/3">
+                        <div class="w-3/4">
                             @foreach ($links as $link)
-                            <div class="link-detail
+                            <div class="link-detail px-5 w-full h-full py-3 grid grid-cols-2 grid-rows-3 gap-12 grid-flow-col
                                         @if ($loop->first)
                                         block
                                         @else
                                         hidden
                                         @endif
                                         " id="detail-link-{{ $loop->index }}">
-                                {{ $link->real_link  }}
+                                <div class="text-lg">
+                                    <span class="text-gray-600">Original Link</span> <br />
+                                    @start_with_http($link->real_link)
+                                    <a href="{{ "http://".$link->real_link  }}">{{ $link->real_link  }}</a>
+                                    @else
+                                    <a href="{{ $link->real_link  }}">{{ $link->real_link  }}</a>
+                                    @endstart_with_http
+                                </div>
+                                <div class="text-lg">
+                                    <span class="text-gray-600">Created At</span> <br />
+                                    {{ $link->created_at  }}
+                                </div>
+                                <div class="text-lg">
+                                    <span class="text-gray-600">Times Clicked</span> <br />
+                                    {{ $link->hit_count  }} times clicked
+                                </div>
+                                <div class="text-lg row-span-3">
+                                    <form method="POST" action="{{ route("delete-link")  }}">
+                                        @csrf
+
+                                        <input type="hidden" name="alias" value="{{ $link->alias }}" />
+
+                                        <x-button type="submit" color="red" class="ml-3">
+                                            {{ __('Delete') }}
+                                        </x-button>
+                                    </form>
+                                </div>
                             </div>
                             @endforeach
                         </div>

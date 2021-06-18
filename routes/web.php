@@ -25,5 +25,9 @@ Route::prefix('/a')->group(function () {
         ->middleware(['auth'])
         ->name('dashboard');
 
+    Route::post('/delete', [DashboardShortenerController::class, 'delete'])
+        ->middleware(['auth'])
+        ->name('delete-link');
+
     require __DIR__.'/auth.php';
 });

@@ -52,7 +52,7 @@
                     {{ __('Create Account') }}
                 </x-link-button-transparent>
 
-                <x-button>
+                <x-button type="submit" color="green">
                     {{ __('Log in') }}
                 </x-button>
             </div>
