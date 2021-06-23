@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/{alias?}', [LinkShortenerController::class, 'home'])->name('home');
-Route::post('/', [LinkShortenerController::class, 'insert']);
+Route::post('/', [LinkShortenerController::class, 'insert'])->name('insert-link');
 
 Route::prefix('/a')->group(function () {
 

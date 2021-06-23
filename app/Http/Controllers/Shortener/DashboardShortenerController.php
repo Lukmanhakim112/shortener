@@ -20,7 +20,8 @@ class DashboardShortenerController extends Controller
      */
     public function dashboard(Request $request)
     {
-        $links = Link::all();
+
+        $links = Link::where("user_id", Auth::id())->get();
 
         return view('dashboard', [
             'links' => $links
@@ -29,7 +30,7 @@ class DashboardShortenerController extends Controller
 
 
     /**
-     * Delete link
+     * Delete a link
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  alias  $alias
@@ -39,7 +40,7 @@ class DashboardShortenerController extends Controller
     {
         $link = Link::where("alias", $request->alias)->first();
 
-        if (Auth::id() == $link->id) {
+        if (Auth::id() == $link->user_id) {
             $link->delete();
             return redirect('a/dashboard');
         }

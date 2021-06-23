@@ -1,14 +1,40 @@
 <x-guest-layout>
+    <style type="text/css" media="screen">
+     .hidden {
+         opacity: 0;
+     }
+     #alert-copied {
+         opacity: 1;
+         transition: opacity 1s;
+     }
+    </style>
+
     <div class="py-5 mt-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-md sm:rounded-md">
-                <div class="p-6 text-lg" style="background: #DAB552">
-                    Shortener
+                <div class="px-6 py-4 text-lg flex justify-between items-center" style="background: #DAB552">
+                    <div>
+                        {{ __("Shortener")  }}
+                    </div>
+                    <div>
+                       @if (!(Auth::check()))
+                           <x-link-button href="{{ route('register') }}">
+                               {{ __("Sign Up")  }}
+                           </x-link-button>
+                           <x-link-button href="{{ route('login')  }}" class="bg-yellow-600 text-white">
+                               {{ __('Login') }}
+                           </x-link-button>
+                       @else
+                           <x-link-button href="{{ route('dashboard')  }}" class="bg-yellow-600 text-white">
+                               {{ __('Dashboard') }}
+                           </x-link-button>
+                       @endif
+                    </div>
                 </div>
 
                 <div class="p-6">
 
-                    <div id="alert-copied" class="transition duration-500 ease-in-out rounded-md bg-green-300 px-5 py-3 font-bold" style="display: none">
+                    <div id="alert-copied" class="transition duration-500 ease-in-out rounded-md bg-green-300 px-5 py-3 font-bold hidden">
                         Coppied!
                     </div>
 
@@ -37,9 +63,9 @@
                  const alert = document.getElementById("alert-copied");
                  navigator.clipboard.writeText(link)
                           .then(() => {
-                              alert.style.display = 'block';
+                              alert.classList.replace("hidden", "block")
                               setTimeout(function() {
-                                  alert.style.display = 'none';
+                                  alert.classList.replace("block", "hidden")
                               }, 3000);
                           })
                           .catch(err => {

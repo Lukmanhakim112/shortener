@@ -28,7 +28,7 @@ class LinkShortenerController extends Controller
         if ($alias) {
             // Check if the real link exist when not return 404
             if (!($link = Link::where('alias', $alias)->first())) {
-                return view('link-not-found');
+                return response()->view('link-not-found')->setStatusCode(404);
             }
 
             $real_link = $link->real_link; // Retrive the real link (destination)
