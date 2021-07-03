@@ -24,6 +24,8 @@
                 <form method="POST" action="{{ route('insert-link')  }}">
                     @csrf
 
+                    <input type="hidden" name="origin" value="dashboard" />
+
                     <div class="flex flex-row-reverse mb-5">
                         <button type="button"  class="addLink inline-flex items-center px-4 py-2 rounded font-semibold text-green-900 text-sm tracking-widest hover:bg-green-100 active:bg-green-500 focus:outline-none focus:border-green-900 focus:ring ring-green-300 disabled:opacity-25 transition ease-in-out duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
@@ -92,7 +94,7 @@
                                     @endstart_with_http
                                 </div>
                                 <div class="text-lg">
-                                    <span class="text-gray-600">Times Clicked</span> <br />
+                                    <span class="text-gray-600">Click Counter</span> <br />
                                     {{ $link->hit_count  }} times clicked
                                 </div>
                                 <div class="text-lg">
@@ -108,6 +110,11 @@
                                         <x-button type="submit" color="red" class="ml-3">
                                             {{ __('Delete') }}
                                         </x-button>
+
+                                        <x-button id="copy-button-{{ $loop->index }}" type="button" color="green" class="copy-button ml-1">
+                                            {{ __('Copy Shorted Link') }}
+                                        </x-button>
+
                                     </form>
                                 </div>
                             </div>
