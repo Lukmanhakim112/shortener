@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{alias?}', [LinkShortenerController::class, 'home'])->name('home');
+Route::get('/', [LinkShortenerController::class, 'home'])->name('home');
+Route::get('/{alias?}', [LinkShortenerController::class, 'translate'])->name('redirect-link');
 Route::post('/', [LinkShortenerController::class, 'insert'])->name('insert-link');
 
 Route::prefix('/a')->group(function () {
@@ -24,7 +25,6 @@ Route::prefix('/a')->group(function () {
     Route::get('/dashboard', [DashboardShortenerController::class, 'dashboard'])
         ->middleware(['auth'])
         ->name('dashboard');
-
     Route::post('/delete', [DashboardShortenerController::class, 'delete'])
         ->middleware(['auth'])
         ->name('delete-link');

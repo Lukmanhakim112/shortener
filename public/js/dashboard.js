@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addLinkForm = document.getElementById("addLinkForm");
 
     function show_hide_link_form() {
-        let timeOut = 250;
+        const timeOut = 230;
         if (addLinkForm.classList.contains("hidden")) {
             addLinkForm.classList.toggle("hidden")
             setTimeout(function(){
