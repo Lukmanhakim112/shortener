@@ -14,9 +14,10 @@ class LinkShortenerController extends Controller
      /**
      * Just showing the home page
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
-    public function home(Request $request, $alias = null)
+    public function home(Request $request)
     {
         return view('home');
     }
@@ -29,6 +30,7 @@ class LinkShortenerController extends Controller
      *
      * If the link not found return 404
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  string  $alias
      * @return \Illuminate\View\Redirect
      */
@@ -56,6 +58,7 @@ class LinkShortenerController extends Controller
     /**
      * Save link to database
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
     public function insert(Request $request)
@@ -87,9 +90,16 @@ class LinkShortenerController extends Controller
 
         $link->save();
 
-        return view('link-success', [
-            'link' => $request->link,
-            'alias' => $alias,
-        ]);
+        if ($request->origin == 'dashboard') {
+
+            return redirect('a/dashboard');
+
+        } else {
+            return view('link-success', [
+                'link' => $request->link,
+                'alias' => $alias,
+            ]);
+        }
+
     }
 }
