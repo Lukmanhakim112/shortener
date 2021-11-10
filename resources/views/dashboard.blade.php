@@ -68,7 +68,14 @@
 
             <div class="bg-white overflow-hidden shadow sm:rounded-md">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex" style="height: calc(100vh - 15rem)">
+                    <div class="flex
+                        @if (count($links) < 1)
+                        place-items-center justify-center
+                        @endif
+                        " style="height: calc(100vh - 15rem)">
+
+                        @if (count($links) >= 1)
+
                         <div class="w-1/4 mr-3" style="overflow: auto;">
                             @foreach ($links as $link)
                             <button id="link-{{ $loop->index }}" class="link py-5 text-left px-3 w-full block text-md hover:bg-gray-100">
@@ -99,7 +106,7 @@
                                 </div>
                                 <div class="text-lg">
                                     <span class="text-gray-600">Created At</span> <br />
-                                    {{ $link->created_at  }}
+                                    {{ $link->created_at->format('d/m/Y')  }}
                                 </div>
                                 <div class="text-lg row-span-3">
                                     <form method="POST" action="{{ route("delete-link")  }}">
@@ -120,6 +127,14 @@
                             </div>
                             @endforeach
                         </div>
+
+                        @else
+                            <div>
+                                <img src="{{ asset('img/undraw_not_found_-60-pq.svg') }}" alt="not-found image" class="object-contain h-48">
+                                <h4 class="mt-4 text-gray-500 text-center">Nothing to see here, yet...</h4>
+                            </div>
+
+                        @endif
                     </div>
 
                 </div>

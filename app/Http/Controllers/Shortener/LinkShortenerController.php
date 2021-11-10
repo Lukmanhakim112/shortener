@@ -17,6 +17,7 @@ class LinkShortenerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
+
     public function home(Request $request)
     {
         return view('home');
@@ -34,7 +35,9 @@ class LinkShortenerController extends Controller
      * @param  string  $alias
      * @return \Illuminate\View\Redirect
      */
-    public function translate(Request $request, $alias) {
+
+    public function translate(Request $request, $alias)
+    {
 
         // Check if the real link exist when not return 404
         if (!($link = Link::where('alias', $alias)->first())) {
@@ -61,6 +64,7 @@ class LinkShortenerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
+
     public function insert(Request $request)
     {
 

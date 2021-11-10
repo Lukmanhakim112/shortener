@@ -16,7 +16,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body {{ $attributes->merge(['class' => 'font-sans text-gray-900 antialiased', 'style' => 'background: #DBD9A6;']) }}>
+    <body {{ $attributes->merge(['class' => 'font-sans text-gray-900 antialiased', 'style' => 'background: #F2DEA2;']) }}>
 
         {{ $slot }}
 

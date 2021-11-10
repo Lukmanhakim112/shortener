@@ -47,6 +47,6 @@ class DashboardShortenerController extends Controller
             return redirect('a/dashboard');
         }
 
-        abort(401);
+        abort(403);
     }
 }
