@@ -78,7 +78,7 @@
 
                         <div class="w-1/4 mr-3" style="overflow: auto;">
                             @foreach ($links as $link)
-                            <button id="link-{{ $loop->index }}" class="link py-5 text-left px-3 w-full block text-md hover:bg-gray-100">
+                            <button id="link-{{ $loop->index }}" class="border-l-2 border-purple-500 link py-5 font-medium text-left my-3 px-3 w-full block text-md hover:bg-gray-100">
                                 {{ url("/")."/".$link->alias  }}
                             </button>
                             @endforeach
